@@ -51,7 +51,7 @@ Application desktop : voir [docs/INSTALL.md](docs/INSTALL.md) (nécessite Rust).
 
 ## Licence
 
-À confirmer — voir [docs/DECISIONS.md](docs/DECISIONS.md#adr-007--licence-proposed). Tant qu'aucun fichier `LICENSE` n'est présent, aucune licence n'est accordée.
+[Apache-2.0](LICENSE) — voir l'[ADR-007](docs/DECISIONS.md#adr-007--licence-accepted). La licence couvre uniquement le code de RiftCoach ; la propriété intellectuelle de Riot Games relève des conditions de Riot.
 
 ## Mentions légales
 

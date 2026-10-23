@@ -34,7 +34,7 @@ Six routes. A 40-line hash router behaves identically in the browser and the Tau
 
 Simulated games are appended after the latest game, and "now" in demo mode is the end of that game. This keeps goal tracking consistent (games always occur after the goal's creation) without generating future-dated data relative to the dataset.
 
-## ADR-007 — Licence (Proposed)
+## ADR-007 — Licence (Accepted, 2026-10-23)
 
 **Options.**
 - **Apache-2.0** — permissive, explicit patent grant, compatible with Tauri (MIT/Apache) and the npm ecosystem; allows forks, including closed ones.
@@ -43,7 +43,7 @@ Simulated games are appended after the latest game, and "now" in demo mode is th
 
 **Recommendation.** Apache-2.0: the app is a client, the ecosystem is permissive, and the patent grant protects contributors. Riot's IP terms apply independently of the code licence (no Riot assets are bundled).
 
-**Status.** Awaiting maintainer confirmation; no `LICENSE` file until then.
+**Status.** Accepted by the maintainer on 2026-10-23. `LICENSE` contains the official Apache-2.0 text (SHA-256 `cfc7749b…3d30`).
 
 ## ADR-008 — Coaching thresholds (Accepted)
 
