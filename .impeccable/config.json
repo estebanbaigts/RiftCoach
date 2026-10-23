@@ -38,6 +38,114 @@
         ],
         "createdAt": "2026-10-23T09:14:54.117Z",
         "reason": "Ruled notebook lines on the Carnet concept swatch; domain-appropriate texture for that concept"
+      },
+      {
+        "rule": "nested-cards",
+        "value": "*",
+        "files": [
+          "site/concepts/03-aurora.html"
+        ],
+        "createdAt": "2026-10-23T09:30:28.625Z",
+        "reason": "app-window mockup frame containing dashboard tiles; intentional art direction of one of 8 deliberately different concept mockups the user requested"
+      },
+      {
+        "rule": "nested-cards",
+        "value": "*",
+        "files": [
+          "site/concepts/06-pop.html"
+        ],
+        "createdAt": "2026-10-23T09:30:28.642Z",
+        "reason": "app-window mockup frame containing dashboard tiles; intentional art direction of one of 8 deliberately different concept mockups the user requested"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "site/concepts/02-brutal.html"
+        ],
+        "createdAt": "2026-10-23T09:30:28.658Z",
+        "reason": "newsprint paper ground; intentional art direction of one of 8 deliberately different concept mockups the user requested"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "site/concepts/06-pop.html"
+        ],
+        "createdAt": "2026-10-23T09:30:28.674Z",
+        "reason": "cream ground of the pop palette; intentional art direction of one of 8 deliberately different concept mockups the user requested"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "site/concepts/08-carnet.html"
+        ],
+        "createdAt": "2026-10-23T09:30:28.689Z",
+        "reason": "notebook paper; intentional art direction of one of 8 deliberately different concept mockups the user requested"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "site/concepts/02-brutal.html"
+        ],
+        "createdAt": "2026-10-23T09:30:28.705Z",
+        "reason": "editorial ticker, disabled under prefers-reduced-motion; intentional art direction of one of 8 deliberately different concept mockups the user requested"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "site/concepts/02-brutal.html"
+        ],
+        "createdAt": "2026-10-23T09:30:28.721Z",
+        "reason": "full-bleed ticker band and bordered grid whose cells carry their own 18px padding"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "site/concepts/01-signal.html"
+        ],
+        "createdAt": "2026-10-23T09:30:28.737Z",
+        "reason": "demo-data hatch banner mirrors the shipped app's demo banner"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "site/concepts/02-brutal.html"
+        ],
+        "createdAt": "2026-10-23T09:30:28.753Z",
+        "reason": "demo hatch badge; intentional art direction of one of 8 deliberately different concept mockups the user requested"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "site/concepts/06-pop.html"
+        ],
+        "createdAt": "2026-10-23T09:30:28.770Z",
+        "reason": "candy-stripe progress fill; intentional art direction of one of 8 deliberately different concept mockups the user requested"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "site/concepts/08-carnet.html"
+        ],
+        "createdAt": "2026-10-23T09:30:28.786Z",
+        "reason": "ruled notebook lines; intentional art direction of one of 8 deliberately different concept mockups the user requested"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "site/index.html"
+        ],
+        "createdAt": "2026-10-23T09:30:28.801Z",
+        "reason": "Carnet concept swatch shows ruled notebook lines"
       }
     ]
   }
