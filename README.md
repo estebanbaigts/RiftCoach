@@ -18,8 +18,10 @@ Understand your performance, spot recurring areas to work on, and turn them into
 | Preparation sheets — options and trade-offs per role, your champion stats | ✅ original content; Data Dragon not integrated |
 | FR / EN, light / dark, keyboard navigation | ✅ |
 | Riot ID / region validation | ✅ validation only, **no request sent** |
+| Champion select — pick options by matchup win rate, counters, your comfort | ✅ demo only, with **fictional aggregate stats** (see compliance F17) |
+| Builds & runes, loading screen | ⏳ next, demo first |
 | Real data (Riot API) | ⛔ not implemented — gated on Riot approval |
-| Native desktop build (Tauri) | ⚠️ configured; compiled in CI, not yet verified on a release machine |
+| Native desktop build (Tauri) | ✅ built and launched on macOS; CI builds macOS, Windows and Linux (fmt, clippy, tests). Signed installers: not yet |
 | SQLite storage | ⚠️ schema designed (`src-tauri/migrations`), not wired |
 
 ## Principles
@@ -36,7 +38,7 @@ Requires Node.js ≥ 20.18.
 ```bash
 npm ci
 npm run dev        # http://127.0.0.1:1420
-npm test           # 64 tests
+npm test           # 74 tests
 npm run build
 ```
 

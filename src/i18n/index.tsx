@@ -21,7 +21,8 @@ export function translate(locale: Locale, key: MessageKey, params?: Params): str
     template = PLURALS[locale].select(params.n) === "one" ? one : other;
   }
   if (!params) return template;
-  return template.replace(/\{(\w+)\}/g, (whole, name: string) => (name in params ? String(params[name]) : whole));
+  const fmt = (v: string | number) => (typeof v === "number" ? v.toLocaleString(locale === "fr" ? "fr-FR" : "en-GB") : v);
+  return template.replace(/\{(\w+)\}/g, (whole, name: string) => (name in params ? fmt(params[name] as string | number) : whole));
 }
 
 interface I18n {

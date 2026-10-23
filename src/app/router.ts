@@ -6,6 +6,7 @@ export type Route =
   | { name: "matches" }
   | { name: "match"; id: string }
   | { name: "coach" }
+  | { name: "draft" }
   | { name: "prep" }
   | { name: "settings" };
 
@@ -16,6 +17,7 @@ export function parseRoute(hash: string): Route {
     case "matches":
       return arg ? { name: "match", id: decodeURIComponent(arg) } : { name: "matches" };
     case "coach":
+    case "draft":
     case "prep":
     case "settings":
       return { name: head };

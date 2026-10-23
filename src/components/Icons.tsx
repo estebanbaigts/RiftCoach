@@ -20,6 +20,12 @@ export const IconCoach = () => (
     <path d="M10.5 4H14v3.5" />
   </svg>
 );
+export const IconDraft = () => (
+  <svg {...base}>
+    <path d="M8 2l5 3v6l-5 3-5-3V5z" />
+    <path d="M8 6v4M6 8h4" />
+  </svg>
+);
 export const IconPrep = () => (
   <svg {...base}>
     <rect x="3" y="2" width="10" height="12" rx="1.5" />

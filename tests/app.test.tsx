@@ -53,4 +53,18 @@ describe("App (demo mode, integration)", () => {
     fireEvent.keyDown(rows[0]!, { key: "Enter" });
     expect(window.location.hash).toMatch(/^#\/matches\/DEMO_/);
   });
+
+  it("champion select: labels demo stats, reacts to the opponent and to bans", () => {
+    renderApp();
+    go("#/draft");
+    expect(screen.getAllByText("Fictional aggregate statistics").length).toBeGreaterThan(0);
+    const select = screen.getByRole("combobox", { name: "Lane opponent" });
+    fireEvent.change(select, { target: { value: "Zed" } });
+    expect(screen.getByRole("heading", { name: /Against Zed/ })).toBeInTheDocument();
+    const cards = () => screen.getAllByRole("article").map((a) => a.getAttribute("aria-label"));
+    expect(cards()).not.toContain("Zed");
+    const first = cards()[0]!;
+    fireEvent.click(screen.getByRole("button", { name: first, pressed: false }));
+    expect(cards()).not.toContain(first);
+  });
 });

@@ -85,6 +85,8 @@ Objectif produit exprimé par le mainteneur : voir sa partie en direct, avec des
 - **(b)** un fournisseur tiers sous licence explicite autorisant cet usage. Le scraping de sites tiers est exclu (CGU, et risque de *data brokering*) ;
 - **(c)** ou, en attendant, les seules statistiques **personnelles** du joueur (faisable immédiatement, mais petits échantillons, à afficher comme tels).
 
+**État au 2026-10-23 :** l'écran de sélection (F17) existe en mode démo, alimenté par `src/domain/demo/aggregates.ts` (statistiques fictives, étiquetées comme telles), moteur `src/domain/draft/recommend.ts` (options multiples, lissage, échantillon minimum).
+
 Le prototype peut être construit **en mode démo** (données agrégées synthétiques, clairement étiquetées) sans attendre, mais rien de F16–F20 n'est distribué avec des données réelles avant l'accord de Riot.
 
 ## 5. Avant toute publication publique (checklist)

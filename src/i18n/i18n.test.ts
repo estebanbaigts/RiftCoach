@@ -20,5 +20,7 @@ describe("i18n", () => {
     expect(translate("en", "dash.remakes", { n: 0 })).toBe("0 remakes excluded");
     expect(translate("en", "metric.sample", { n: 2 })).toBe("2 games");
     expect(translate("en", "coach.goal.atMost", { metric: "X" })).toContain("{target}");
+    expect(translate("fr", "metric.sample", { n: 132624 })).toMatch(/^132\s624 parties$/);
+    expect(translate("en", "metric.sample", { n: 132624 })).toBe("132,624 games");
   });
 });

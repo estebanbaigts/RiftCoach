@@ -2,10 +2,11 @@ import { Component, useEffect, useRef, type ErrorInfo, type ReactNode } from "re
 import { AppDataProvider, useAppData } from "./app/AppData";
 import { usePrefs } from "./app/prefs";
 import { href, navigate, useRoute, type Route } from "./app/router";
-import { BrandMark, IconCoach, IconDashboard, IconHistory, IconPrep, IconSettings } from "./components/Icons";
+import { BrandMark, IconCoach, IconDraft, IconDashboard, IconHistory, IconPrep, IconSettings } from "./components/Icons";
 import { ToastProvider } from "./components/ui";
 import type { KeyValueStore } from "./data/storage";
 import { CoachPage } from "./features/coach/CoachPage";
+import { DraftPage } from "./features/draft/DraftPage";
 import { DashboardPage } from "./features/dashboard/DashboardPage";
 import { MatchDetailPage } from "./features/matches/MatchDetailPage";
 import { MatchesPage } from "./features/matches/MatchesPage";
@@ -17,9 +18,10 @@ import { RIOT_LEGAL_NOTICE } from "./i18n/legal";
 const NAV: readonly { route: Route["name"]; key: MessageKey; icon: () => ReactNode; shortcut: string }[] = [
   { route: "dashboard", key: "nav.dashboard", icon: IconDashboard, shortcut: "1" },
   { route: "matches", key: "nav.matches", icon: IconHistory, shortcut: "2" },
-  { route: "coach", key: "nav.coach", icon: IconCoach, shortcut: "3" },
-  { route: "prep", key: "nav.prep", icon: IconPrep, shortcut: "4" },
-  { route: "settings", key: "nav.settings", icon: IconSettings, shortcut: "5" },
+  { route: "draft", key: "nav.draft", icon: IconDraft, shortcut: "3" },
+  { route: "coach", key: "nav.coach", icon: IconCoach, shortcut: "4" },
+  { route: "prep", key: "nav.prep", icon: IconPrep, shortcut: "5" },
+  { route: "settings", key: "nav.settings", icon: IconSettings, shortcut: "6" },
 ];
 
 export function App({ store }: { store: KeyValueStore }) {
@@ -50,6 +52,8 @@ function Screen(props: Parameters<typeof SettingsPage>[0]) {
       return <MatchDetailPage id={route.id} />;
     case "coach":
       return <CoachPage />;
+    case "draft":
+      return <DraftPage />;
     case "prep":
       return <PrepPage />;
     case "settings":
@@ -63,7 +67,7 @@ function Shell({ children }: { children: ReactNode }) {
   const route = useRoute();
   const section = route.name === "match" ? "matches" : route.name;
 
-  // Alt/Option + 1…5 switches section (avoids clashing with typing and OS shortcuts).
+  // Alt/Option + 1…6 switches section (avoids clashing with typing and OS shortcuts).
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (!e.altKey || e.metaKey || e.ctrlKey) return;

@@ -868,3 +868,40 @@ table.matches {
 .main:focus {
   outline: none;
 }
+
+/* ---------- Champion select ---------- */
+
+.draft-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr);
+  gap: var(--sp-6);
+  align-items: start;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  font-size: var(--fs-13);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.chip:hover {
+  background: var(--surface-hover);
+}
+.chip[aria-pressed="true"] {
+  background: var(--loss-soft);
+  border-color: transparent;
+  color: var(--loss);
+  text-decoration: line-through;
+}
+@media (max-width: 1040px) {
+  .draft-layout {
+    grid-template-columns: 1fr;
+  }
+}

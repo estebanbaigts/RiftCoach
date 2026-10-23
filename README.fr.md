@@ -18,8 +18,10 @@ Comprendre ses performances, repérer ses axes d'amélioration récurrents et le
 | Préparation — options et compromis par rôle, vos statistiques par champion | ✅ contenu original ; Data Dragon non intégré |
 | Français / anglais, clair / sombre, navigation clavier | ✅ |
 | Validation Riot ID / région | ✅ validation seule, **aucune requête envoyée** |
+| Sélection des champions — options selon le winrate du matchup, counters, votre confort | ✅ démo uniquement, avec des **statistiques agrégées fictives** (voir conformité F17) |
+| Builds et runes, écran de chargement | ⏳ prochaine étape, en démo d'abord |
 | Données réelles (API Riot) | ⛔ non implémenté — conditionné à la validation Riot |
-| Application desktop (Tauri) | ⚠️ configurée ; compilée en CI, pas encore vérifiée sur une machine de publication |
+| Application desktop (Tauri) | ✅ compilée et lancée sur macOS ; la CI compile macOS, Windows et Linux (fmt, clippy, tests). Installateurs signés : pas encore |
 | Stockage SQLite | ⚠️ schéma conçu (`src-tauri/migrations`), non branché |
 
 ## Principes
@@ -36,7 +38,7 @@ Node.js ≥ 20.18 requis.
 ```bash
 npm ci
 npm run dev        # http://127.0.0.1:1420
-npm test           # 64 tests
+npm test           # 74 tests
 npm run build
 ```
 
