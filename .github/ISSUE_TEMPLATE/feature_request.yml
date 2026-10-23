@@ -1,0 +1,36 @@
+name: Feature proposal / Proposer une fonctionnalité
+description: Suggest an improvement.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / Besoin
+      description: What player problem does this solve?
+    validations: { required: true }
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal / Proposition
+    validations: { required: true }
+  - type: textarea
+    id: data
+    attributes:
+      label: Data needed and source / Données nécessaires et source
+      description: Which data, from which official source? Is it available before/after a game, or during one?
+    validations: { required: true }
+  - type: checkboxes
+    id: compliance
+    attributes:
+      label: Riot policy check / Vérification des règles Riot
+      options:
+        - label: Does not read game memory, inject code or automate in-game actions.
+          required: true
+        - label: Does not reveal information hidden from the player during a game (timers, cooldowns, predictions).
+          required: true
+        - label: Is not an MMR/ELO estimate, lobby scouting or de-anonymisation feature.
+          required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

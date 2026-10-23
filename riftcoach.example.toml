@@ -1,0 +1,15 @@
+# RiftCoach — example configuration. Contains NO secret.
+# Copy to `riftcoach.local.toml` (git-ignored) for local development.
+# NOTE: not read by the app yet; documents the planned configuration surface.
+
+# demo | local-development | production
+mode = "demo"
+
+[local_development]
+# Your PERSONAL Riot development key is NOT stored here.
+# It will be requested by the app and saved in the OS keychain (step 7).
+platform = "EUW1"
+
+[privacy]
+telemetry = false        # always false; no telemetry exists
+external_ai = false      # requires explicit opt-in in the UI when implemented

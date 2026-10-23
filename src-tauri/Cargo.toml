@@ -2,7 +2,6 @@
 name = "riftcoach"
 version = "0.1.0"
 description = "Open-source, local-first League of Legends progression companion"
-license = "Apache-2.0"
 edition = "2021"
 rust-version = "1.77.2"
 publish = false

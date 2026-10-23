@@ -1,0 +1,45 @@
+name: Bug report / Signaler un bug
+description: Something does not work as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ⚠️ Never paste API keys, tokens or personal data. / Ne collez jamais de clé API ni de donnée personnelle.
+        Security issue? Use private reporting instead (see SECURITY.md).
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened? / Que s'est-il passé ?
+    validations: { required: true }
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / Étapes pour reproduire
+      placeholder: "1. Open Coach\n2. Click …"
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour / Comportement attendu
+    validations: { required: true }
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform / Plateforme
+      options: [Windows 11, Windows 10, macOS (Apple Silicon), macOS (Intel), Web preview (npm run dev), Other]
+    validations: { required: true }
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Data mode / Mode de données
+      options: [demo, local-development, production]
+    validations: { required: true }
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots (redacted)
