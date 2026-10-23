@@ -1,0 +1,124 @@
+/*
+ * RiftCoach design tokens — "Slate & Signal".
+ * Neutral graphite / warm paper surfaces, one verdigris accent, two outcome signals.
+ * Colour is never the only carrier of meaning: results also carry text/shape.
+ */
+:root {
+  color-scheme: light;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI Variable Text", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+
+  --fs-11: 0.6875rem;
+  --fs-12: 0.75rem;
+  --fs-13: 0.8125rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-20: 1.25rem;
+  --fs-28: 1.75rem;
+  --lh-tight: 1.2;
+  --lh-body: 1.5;
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 14px;
+
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+
+  --sidebar-w: 224px;
+
+  /* Light */
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --surface-2: #efede7;
+  --surface-hover: #e9e6df;
+  --border: #e0ddd5;
+  --border-strong: #c9c5bb;
+  --text: #1a1d21;
+  --text-muted: #5a626c;
+  --text-faint: #7d848d;
+  --accent: #2c7a6c;
+  --accent-strong: #1f5f53;
+  --accent-soft: #dcefea;
+  --on-accent: #ffffff;
+  --win: #2a7d5c;
+  --win-soft: #def0e7;
+  --loss: #b8404c;
+  --loss-soft: #f7e1e3;
+  --warn: #8d6410;
+  --warn-soft: #f6ecd2;
+  --chart-grid: #e7e4dd;
+  --focus: #2c7a6c;
+  --shadow: 0 1px 2px rgb(20 22 26 / 0.06), 0 2px 8px rgb(20 22 26 / 0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0e1013;
+    --surface: #15181c;
+    --surface-2: #1b1f24;
+    --surface-hover: #22272d;
+    --border: #262b32;
+    --border-strong: #353c45;
+    --text: #e6e9ec;
+    --text-muted: #9aa3ad;
+    --text-faint: #78818b;
+    --accent: #5cb8a6;
+    --accent-strong: #7fd0c0;
+    --accent-soft: #17302b;
+    --on-accent: #0b1513;
+    --win: #5bbf91;
+    --win-soft: #15291f;
+    --loss: #e57b85;
+    --loss-soft: #301a1d;
+    --warn: #e0b45a;
+    --warn-soft: #2d2412;
+    --chart-grid: #22272d;
+    --focus: #7fd0c0;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0e1013;
+  --surface: #15181c;
+  --surface-2: #1b1f24;
+  --surface-hover: #22272d;
+  --border: #262b32;
+  --border-strong: #353c45;
+  --text: #e6e9ec;
+  --text-muted: #9aa3ad;
+  --text-faint: #78818b;
+  --accent: #5cb8a6;
+  --accent-strong: #7fd0c0;
+  --accent-soft: #17302b;
+  --on-accent: #0b1513;
+  --win: #5bbf91;
+  --win-soft: #15291f;
+  --loss: #e57b85;
+  --loss-soft: #301a1d;
+  --warn: #e0b45a;
+  --warn-soft: #2d2412;
+  --chart-grid: #22272d;
+  --focus: #7fd0c0;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+  }
+}
