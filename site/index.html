@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="RiftCoach — compagnon de progression League of Legends open source et local-first. Comprendre ses performances, identifier ses axes, suivre des objectifs mesurables." />
+<meta name="color-scheme" content="light dark" />
+<title>RiftCoach — progresser à partir de ses parties</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="top">
+  <a class="brand" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19c2-8 6-12 16-14"/><path d="M4 19c5-2 9-5 11-10" opacity=".55"/><circle cx="20" cy="5" r="1.6"/></svg>RiftCoach</a>
+  <nav aria-label="Sections">
+    <a href="#pourquoi">Pourquoi</a><a href="#comment">Comment</a><a href="#statut">Statut</a><a href="#concepts">Concepts</a><a href="#contribuer">Contribuer</a>
+  </nav>
+  <a class="btn small" href="https://github.com/estebanbaigts/RiftCoach">GitHub</a>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <h1 data-reveal>Progresser à partir de <em>vos</em> parties.</h1>
+    <p class="lead" data-reveal>RiftCoach est un compagnon League of Legends qui transforme votre historique en trois axes de progression clairs, justifiés par vos chiffres, puis en objectifs que vous pouvez suivre partie après partie.</p>
+    <div class="cta" data-reveal>
+      <a class="btn primary" href="https://github.com/estebanbaigts/RiftCoach">Voir le code sur GitHub</a>
+      <a class="btn" href="#concepts">Explorer les 8 concepts</a>
+    </div>
+    <p class="status-pill" data-reveal><span class="dot"></span>Open source · Apache-2.0 · prototype v0.1 sur données de démonstration</p>
+  </section>
+
+  <section id="pourquoi" class="band">
+    <div class="sec-head"><p class="eyebrow">Pourquoi</p><h2>Les statistiques ne suffisent pas.</h2></div>
+    <div class="grid3">
+      <article class="card" data-reveal><h3>Trop de chiffres</h3><p>Les outils classiques affichent des dizaines d'indicateurs sans dire lesquels comptent pour vous, ni sur combien de parties ils reposent.</p></article>
+      <article class="card" data-reveal><h3>Pas de suite</h3><p>Voir qu'on meurt trop ne dit pas quoi faire ensuite. RiftCoach propose un objectif mesurable et vérifie, sur les parties suivantes, s'il est atteint.</p></article>
+      <article class="card" data-reveal><h3>Vos données vous appartiennent</h3><p>Aucun compte, aucune télémétrie, aucun envoi vers une IA externe. Tout est calculé et stocké sur votre machine.</p></article>
+    </div>
+  </section>
+
+  <section id="comment" class="band">
+    <div class="sec-head"><p class="eyebrow">Comment</p><h2>Trois piliers, un moteur transparent.</h2></div>
+    <ol class="steps">
+      <li data-reveal><span>01</span><div><h3>Comprendre</h3><p>Taux de victoire avec intervalle de confiance, KDA, CS/min, durée, tendances sur 7 et 30 jours. Chaque indicateur affiche sa période, sa définition et la taille de l'échantillon. Une donnée manquante est exclue, jamais devinée.</p></div></li>
+      <li data-reveal><span>02</span><div><h3>Identifier</h3><p>Un moteur de règles déterministe compare vos parties récentes à votre propre référence. Il ne conclut rien sous 10 parties, retient au plus 3 axes, et indique pour chacun les données utilisées et un niveau de confiance. Une corrélation n'est jamais présentée comme une cause.</p></div></li>
+      <li data-reveal><span>03</span><div><h3>Agir</h3><p>Chaque axe devient un objectif chiffré (par exemple « morts / 10 min ≤ 1,77 sur 10 parties »), suivi automatiquement à partir de son adoption.</p></div></li>
+    </ol>
+    <div class="arch" data-reveal>
+      <div><b>Interface</b>React · TypeScript strict</div>
+      <div><b>Domaine pur</b>statistiques · coach · validation</div>
+      <div><b>Stockage local</b>SQLite (prévu) · aucune donnée distante</div>
+      <div><b>Shell natif</b>Tauri 2 · zéro permission</div>
+    </div>
+  </section>
+
+  <section id="statut" class="band">
+    <div class="sec-head"><p class="eyebrow">Statut honnête</p><h2>Ce qui marche, ce qui reste à faire.</h2></div>
+    <div class="table" role="table" aria-label="Statut des fonctionnalités">
+      <div role="row"><span role="cell">Tableau de bord, historique, détail de partie</span><span role="cell" class="ok">Fonctionne (démo)</span></div>
+      <div role="row"><span role="cell">Coach, objectifs et suivi</span><span role="cell" class="ok">Fonctionne (démo)</span></div>
+      <div role="row"><span role="cell">Français / anglais, clair / sombre, clavier</span><span role="cell" class="ok">Fonctionne</span></div>
+      <div role="row"><span role="cell">Application desktop macOS (Tauri)</span><span role="cell" class="ok">Compilée et lancée</span></div>
+      <div role="row"><span role="cell">Windows, installateurs signés</span><span role="cell" class="wip">En cours (CI)</span></div>
+      <div role="row"><span role="cell">Vos vraies parties (API Riot)</span><span role="cell" class="wait">Après validation par Riot</span></div>
+      <div role="row"><span role="cell">Préparation de partie : builds, runes, matchups</span><span role="cell" class="wait">À l'étude, soumis aux règles Riot</span></div>
+    </div>
+    <div class="grid2">
+      <article class="card" data-reveal><h3>Confidentialité</h3><p>Aucun compte · aucune télémétrie · aucune requête réseau en mode démo · suppression des données depuis l'application.</p></article>
+      <article class="card" data-reveal><h3>Règles Riot d'abord</h3><p>Pas de lecture mémoire, pas d'information cachée en partie, pas de calculateur de MMR, pas de dé-anonymisation. Chaque fonctionnalité est documentée dans un <a href="https://github.com/estebanbaigts/RiftCoach/blob/main/docs/RIOT_COMPLIANCE.md">registre de conformité</a>.</p></article>
+    </div>
+  </section>
+
+  <section id="concepts" class="band">
+    <div class="sec-head"><p class="eyebrow">Exploration visuelle</p><h2>8 directions artistiques.</h2><p class="muted">Des maquettes animées de l'application et du site, chacune dans un style radicalement différent. Données fictives ; rien n'est fonctionnel dans ces pages.</p></div>
+    <ul class="concepts">
+      <li data-reveal><a href="concepts/01-signal.html" class="c c1"><img src="concepts/previews/01-signal.png" width="1280" height="800" loading="lazy" alt="Aperçu du concept Signal : tableau de bord RiftCoach dans ce style" /><span class="sw"><i></i><i></i><i></i></span><b>01 Signal</b><small>Sobre, orienté données. Le style actuel de l'app.</small></a></li>
+      <li data-reveal><a href="concepts/02-brutal.html" class="c c2"><img src="concepts/previews/02-brutal.png" width="1280" height="800" loading="lazy" alt="Aperçu du concept Brutal : tableau de bord RiftCoach dans ce style" /><span class="sw"><i></i><i></i><i></i></span><b>02 Brutal</b><small>Éditorial, typo géante, bandeau défilant.</small></a></li>
+      <li data-reveal><a href="concepts/03-aurora.html" class="c c3"><img src="concepts/previews/03-aurora.png" width="1280" height="800" loading="lazy" alt="Aperçu du concept Aurora : tableau de bord RiftCoach dans ce style" /><span class="sw"><i></i><i></i><i></i></span><b>03 Aurora</b><small>Verre dépoli, dégradés vivants, bento.</small></a></li>
+      <li data-reveal><a href="concepts/04-terminal.html" class="c c4"><img src="concepts/previews/04-terminal.png" width="1280" height="800" loading="lazy" alt="Aperçu du concept Terminal : tableau de bord RiftCoach dans ce style" /><span class="sw"><i></i><i></i><i></i></span><b>04 Terminal</b><small>Écran CRT, monospace, frappe animée.</small></a></li>
+      <li data-reveal><a href="concepts/05-suisse.html" class="c c5"><img src="concepts/previews/05-suisse.png" width="1280" height="800" loading="lazy" alt="Aperçu du concept Suisse : tableau de bord RiftCoach dans ce style" /><span class="sw"><i></i><i></i><i></i></span><b>05 Suisse</b><small>Grille typographique, accent rouge.</small></a></li>
+      <li data-reveal><a href="concepts/06-pop.html" class="c c6"><img src="concepts/previews/06-pop.png" width="1280" height="800" loading="lazy" alt="Aperçu du concept Pop : tableau de bord RiftCoach dans ce style" /><span class="sw"><i></i><i></i><i></i></span><b>06 Pop</b><small>Formes colorées, rebonds élastiques.</small></a></li>
+      <li data-reveal><a href="concepts/07-nocturne.html" class="c c7"><img src="concepts/previews/07-nocturne.png" width="1280" height="800" loading="lazy" alt="Aperçu du concept Nocturne : tableau de bord RiftCoach dans ce style" /><span class="sw"><i></i><i></i><i></i></span><b>07 Nocturne</b><small>Cinématique, serif, fondus lents.</small></a></li>
+      <li data-reveal><a href="concepts/08-carnet.html" class="c c8"><img src="concepts/previews/08-carnet.png" width="1280" height="800" loading="lazy" alt="Aperçu du concept Carnet : tableau de bord RiftCoach dans ce style" /><span class="sw"><i></i><i></i><i></i></span><b>08 Carnet</b><small>Journal dessiné à la main, tracés au stylo.</small></a></li>
+    </ul>
+  </section>
+
+  <section id="contribuer" class="band">
+    <div class="sec-head"><p class="eyebrow">Contribuer</p><h2>Un projet ouvert.</h2></div>
+    <div class="grid3">
+      <a class="card link" href="https://github.com/estebanbaigts/RiftCoach" data-reveal><h3>Le code →</h3><p>React, TypeScript, Tauri 2. 64 tests, CI sur macOS, Windows et Linux.</p></a>
+      <a class="card link" href="https://github.com/estebanbaigts/RiftCoach/blob/main/CONTRIBUTING.md" data-reveal><h3>Guide de contribution →</h3><p>Règles de conformité, tests, i18n, accessibilité.</p></a>
+      <a class="card link" href="https://github.com/estebanbaigts/RiftCoach/issues/new/choose" data-reveal><h3>Proposer une idée →</h3><p>Modèles de bug et de fonctionnalité, avec vérification des règles Riot.</p></a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p><a href="https://github.com/estebanbaigts/RiftCoach">GitHub</a> · <a href="https://github.com/estebanbaigts/RiftCoach/blob/main/docs/PRIVACY.md">Confidentialité</a> · <a href="https://github.com/estebanbaigts/RiftCoach/blob/main/SECURITY.md">Sécurité</a> · Licence Apache-2.0</p>
+  <p class="legal">RiftCoach is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.</p>
+  <p class="legal">Ce site ne charge aucune police, aucun script ni aucun traceur tiers.</p>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>

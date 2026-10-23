@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Concept 03 — Aurora · RiftCoach</title>
+<link rel="stylesheet" href="concept.css" />
+<style>
+  :root { --text: #f4f2ff; --muted: rgb(244 242 255 / .66); --glass: rgb(255 255 255 / .07); --edge: rgb(255 255 255 / .16);
+    font-family: "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif; }
+  body { margin: 0; color: var(--text); background: #0a0618; min-height: 100vh; overflow-x: hidden; }
+  .sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: radial-gradient(ellipse at 50% 120%, #1b1145, #0a0618 60%); }
+  .blob { position: absolute; width: 52vmax; height: 52vmax; border-radius: 50%; filter: blur(80px); opacity: .55; mix-blend-mode: screen; animation: drift 22s ease-in-out infinite alternate; }
+  .b1 { background: #6b4dff; top: -18vmax; left: -10vmax; }
+  .b2 { background: #00c2b8; top: 10vmax; right: -16vmax; animation-duration: 28s; animation-delay: -6s; }
+  .b3 { background: #ff5fa8; bottom: -24vmax; left: 20vmax; animation-duration: 32s; animation-delay: -12s; opacity: .35; }
+  @keyframes drift { 50% { transform: translate(6vmax, 4vmax) scale(1.08); } 100% { transform: translate(-4vmax, 8vmax) scale(.95); } }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 56px 24px 80px; display: grid; gap: 80px; }
+  .glass { background: var(--glass); border: 1px solid var(--edge); border-radius: 28px; backdrop-filter: blur(24px) saturate(140%); -webkit-backdrop-filter: blur(24px) saturate(140%); box-shadow: inset 0 1px 0 rgb(255 255 255 / .12), 0 20px 60px rgb(0 0 0 / .35); }
+  .eyebrow { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+
+  .app { padding: 22px; display: grid; grid-template-columns: 76px 1fr; gap: 22px; }
+  .rail { display: grid; align-content: start; gap: 12px; justify-items: center; padding-top: 6px; }
+  .rail i { width: 44px; height: 44px; border-radius: 14px; background: rgb(255 255 255 / .06); border: 1px solid var(--edge); }
+  .rail i.on { background: linear-gradient(135deg, #6b4dff, #00c2b8); border-color: transparent; box-shadow: 0 8px 24px rgb(107 77 255 / .5); }
+  .head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .head h1 { margin: 0; font-weight: 600; font-size: 30px; letter-spacing: -.01em; }
+  .chip { padding: 6px 14px; border-radius: 999px; font-size: 12px; background: rgb(255 200 90 / .14); border: 1px solid rgb(255 200 90 / .35); color: #ffd98a; }
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 118px; gap: 14px; margin-top: 18px; }
+  .tile { padding: 18px; border-radius: 22px; position: relative; overflow: hidden; }
+  .tile::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(120deg, transparent 30%, rgb(255 255 255 / .12) 50%, transparent 70%); transform: translateX(-100%); transition: transform .9s; }
+  .tile:hover::after { transform: translateX(100%); }
+  .t-wr { grid-column: span 2; grid-row: span 2; display: grid; place-items: center; }
+  .t-k { grid-column: span 2; } .t-chart { grid-column: span 4; grid-row: span 2; } .t-coach { grid-column: span 2; grid-row: span 2; }
+  .lbl { font-size: 13px; color: var(--muted); }
+  .val { font-size: 40px; font-weight: 600; margin-top: 6px; font-variant-numeric: tabular-nums; background: linear-gradient(90deg, #fff, #b9a8ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .ring { width: 170px; height: 170px; position: relative; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring circle { fill: none; stroke-width: 12; }
+  .ring .track { stroke: rgb(255 255 255 / .08); }
+  .ring .fill { stroke: url(#ag); stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: stroke-dashoffset 1.8s cubic-bezier(.2,.8,.2,1) .3s; }
+  .is-in .ring .fill { stroke-dashoffset: calc(440 - 440 * .49); }
+  .ring .mid { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+  .spark-line { fill: none; stroke: url(#lg); stroke-width: 3; stroke-linecap: round; filter: drop-shadow(0 0 8px rgb(0 194 184 / .6)); transition: stroke-dashoffset 2.2s cubic-bezier(.2,.8,.2,1); }
+  .spark-area { fill: url(#fa); opacity: 0; transition: opacity 1.4s 1s; }
+  .is-drawn .spark-line { stroke-dashoffset: 0 !important; } .is-drawn .spark-area { opacity: 1; }
+  .t-coach h3 { margin: 8px 0; font-weight: 600; font-size: 18px; }
+  .t-coach p { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0 0 10px; }
+  .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; background: rgb(0 194 184 / .18); color: #7ff0e8; }
+  .prog { height: 10px; border-radius: 99px; background: rgb(255 255 255 / .08); overflow: hidden; }
+  .prog i { display: block; height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, #6b4dff, #00c2b8); transition: width 1.6s cubic-bezier(.2,.8,.2,1) .6s; }
+  .is-in .prog i { width: 60%; }
+  [data-reveal] { opacity: 0; transform: translateY(24px) scale(.97); filter: blur(8px); transition: all .9s cubic-bezier(.2,.8,.2,1) calc(var(--i) * 110ms); }
+  [data-reveal].is-in { opacity: 1; transform: none; filter: none; }
+
+  .site { text-align: center; padding: 96px 32px; }
+  .site h2 { font-size: clamp(42px, 7vw, 88px); font-weight: 600; line-height: 1; letter-spacing: -.03em; margin: 18px auto; max-width: 14ch; }
+  .site h2 span { background: linear-gradient(90deg, #b9a8ff, #7ff0e8, #ff9ccd, #b9a8ff); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 8s linear infinite; }
+  @keyframes shimmer { to { background-position: 300% 0; } }
+  .site p { color: var(--muted); max-width: 52ch; margin: 0 auto; font-size: 18px; line-height: 1.6; }
+  .cta { margin-top: 36px; display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .cta a { padding: 14px 24px; border-radius: 999px; color: var(--text); text-decoration: none; border: 1px solid var(--edge); background: rgb(255 255 255 / .06); backdrop-filter: blur(12px); }
+  .cta a.p { background: linear-gradient(135deg, #6b4dff, #00c2b8); border: 0; box-shadow: 0 10px 30px rgb(107 77 255 / .45); }
+  @media (max-width: 860px) { .app { grid-template-columns: 1fr; } .rail { display: none; } .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; } .bento > * { grid-column: span 2 !important; grid-row: auto !important; min-height: 120px; } }
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="cbar"><a href="../index.html#concepts">← Galerie</a><strong>Concept 03/08 — Aurora</strong><span class="tag">Maquette · données fictives</span><span class="nav"><a href="02-brutal.html">← Préc.</a><a href="04-terminal.html">Suiv. →</a></span></div>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs>
+  <linearGradient id="ag" x1="0" x2="1"><stop offset="0" stop-color="#6b4dff"/><stop offset="1" stop-color="#00c2b8"/></linearGradient>
+  <linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#b9a8ff"/><stop offset="1" stop-color="#00c2b8"/></linearGradient>
+  <linearGradient id="fa" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#00c2b8" stop-opacity=".3"/><stop offset="1" stop-color="#6b4dff" stop-opacity="0"/></linearGradient>
+</defs></svg>
+<div class="wrap">
+  <section aria-label="Maquette de l'application">
+    <p class="eyebrow">Application — verre dépoli, profondeur, mouvement fluide</p>
+    <div class="app glass">
+      <nav class="rail" aria-label="Navigation (maquette)"><i class="on"></i><i></i><i></i><i></i><i></i></nav>
+      <div>
+        <div class="head"><h1>Bonsoir, Joueur Démo</h1><span class="chip">✦ Données de démonstration</span></div>
+        <div class="bento">
+          <div class="tile glass t-wr" data-reveal="0"><div class="ring"><svg viewBox="0 0 160 160"><circle class="track" cx="80" cy="80" r="70"/><circle class="fill" cx="80" cy="80" r="70"/></svg><div class="mid"><span class="val" data-count="49" data-suffix=" %">49 %</span><span class="lbl">victoires · 79 parties</span></div></div></div>
+          <div class="tile glass t-k" data-reveal="1"><div class="lbl">KDA</div><div class="val" data-count="2.64" data-decimals="2">2,64</div></div>
+          <div class="tile glass t-k" data-reveal="2"><div class="lbl">CS / min</div><div class="val" data-count="6.5" data-decimals="1">6,5</div></div>
+          <div class="tile glass t-chart" data-reveal="3"><div class="lbl">Tendance · glissante 10 parties</div><svg data-spark data-area data-smooth data-w="620" data-h="190" width="100%" role="img" aria-label="Courbe du taux de victoire"></svg></div>
+          <div class="tile glass t-coach" data-reveal="4"><span class="pill">Axe 1 · confiance élevée</span><h3>Morts / 10 min en hausse</h3><p>2,43 sur 15 parties contre 1,77 auparavant. Une association, pas une cause.</p><div class="lbl" style="margin-bottom:8px">Objectif ≤ 1,77 · 6/10</div><div class="prog"><i></i></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="site glass" aria-label="Maquette du site">
+    <p class="eyebrow" data-reveal="0">RiftCoach · open source</p>
+    <h2 data-reveal="1">Chaque partie <span>vous éclaire</span>.</h2>
+    <p data-reveal="2">Un compagnon local qui transforme votre historique en trois axes clairs et en objectifs que vous pouvez suivre. Aucun compte. Aucune donnée envoyée.</p>
+    <div class="cta" data-reveal="3"><a class="p" href="https://github.com/estebanbaigts/RiftCoach">Découvrir sur GitHub</a><a href="../index.html#comment">Comment ça marche</a></div>
+  </section>
+  <p class="legal-note">RiftCoach is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.</p>
+</div>
+<script src="shared.js"></script>
+</body>
+</html>

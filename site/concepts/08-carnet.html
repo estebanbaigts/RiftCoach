@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Concept 08 — Carnet · RiftCoach</title>
+<link rel="stylesheet" href="concept.css" />
+<style>
+  :root { --paper: #fbf8f0; --line: #c9dcef; --margin: #e8a0a0; --ink: #23324d; --pencil: #5b5f66; --marker: #fff27a; --red: #c0392b;
+    --hand: "Bradley Hand", "Segoe Print", "Marker Felt", "Chalkboard SE", "Comic Sans MS", cursive; --body: "Charter", "Iowan Old Style", Georgia, serif; }
+  body { margin: 0; color: var(--ink); font-family: var(--body); background: #e9e3d6; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 48px 20px 80px; display: grid; gap: 56px; }
+  .page { position: relative; background: var(--paper); padding: 56px 48px 48px 96px; box-shadow: 0 1px 0 #d8d1c2, 0 18px 40px rgb(60 50 30 / .18);
+    background-image: linear-gradient(90deg, transparent 72px, var(--margin) 72px 74px, transparent 74px), repeating-linear-gradient(transparent 0 31px, var(--line) 31px 32px); background-position: 0 0, 0 18px; transform: rotate(-.4deg); }
+  .page.alt { transform: rotate(.5deg); }
+  .tape { position: absolute; top: -14px; width: 120px; height: 30px; background: rgb(255 240 160 / .75); box-shadow: 0 1px 2px rgb(0 0 0 / .12); }
+  .tape.l { left: 40px; transform: rotate(-6deg); } .tape.r { right: 50px; transform: rotate(5deg); }
+  h1, h2, h3, .hand { font-family: var(--hand); font-weight: 400; }
+  h1 { font-size: 40px; margin: 0 0 6px; }
+  .date { font-family: var(--hand); color: var(--pencil); font-size: 18px; }
+  .demo { position: absolute; top: 24px; right: 28px; font-family: var(--hand); color: var(--red); border: 2px solid var(--red); padding: 4px 10px; transform: rotate(6deg); border-radius: 6px 12px 8px 14px; font-size: 16px; }
+  .tabs { display: flex; gap: 14px; font-family: var(--hand); font-size: 20px; margin: 8px 0 26px; flex-wrap: wrap; }
+  .tabs a { color: var(--pencil); text-decoration: none; }
+  .tabs a.on { color: var(--ink); background: linear-gradient(transparent 55%, var(--marker) 55% 90%, transparent 90%); }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .stat { position: relative; text-align: center; padding: 14px 6px; }
+  .stat .v { font-family: var(--hand); font-size: 48px; line-height: 1; position: relative; z-index: 1; }
+  .stat .l { font-size: 14px; color: var(--pencil); }
+  .stat svg { position: absolute; inset: -6px -4px; width: calc(100% + 8px); height: calc(100% + 12px); overflow: visible; }
+  .stat svg path { fill: none; stroke: var(--red); stroke-width: 2.2; stroke-linecap: round; stroke-dasharray: 520; stroke-dashoffset: 520; transition: stroke-dashoffset 1.2s ease-in-out calc(var(--i) * 350ms + .2s); }
+  .stat.is-in svg path { stroke-dashoffset: 0; }
+  .spark-line { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; filter: url(#rough); transition: stroke-dashoffset 2.6s ease-in-out .3s; }
+  .is-drawn .spark-line { stroke-dashoffset: 0 !important; }
+  .chart-note { font-family: var(--hand); color: var(--pencil); font-size: 17px; }
+  .two { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; margin-top: 20px; }
+  .sticky { background: #fff59a; padding: 18px 20px; box-shadow: 2px 6px 14px rgb(0 0 0 / .16); transform: rotate(1.5deg); font-size: 16px; line-height: 1.5; }
+  .sticky h3 { margin: 0 0 6px; font-size: 26px; }
+  .hl { background: linear-gradient(transparent 50%, var(--marker) 50%) no-repeat; background-size: 0 100%; transition: background-size 1s ease-in-out .8s; }
+  .is-in .hl, .hl.is-in { background-size: 100% 100%; }
+  .checks { list-style: none; padding: 0; margin: 12px 0 0; display: flex; gap: 6px; }
+  .checks li { width: 22px; height: 22px; border: 2px solid var(--ink); border-radius: 4px 6px 3px 5px; display: grid; place-items: center; font-family: var(--hand); color: var(--red); font-size: 20px; line-height: 1; }
+  .champs { list-style: none; padding: 0; margin: 16px 0 0; font-family: var(--hand); font-size: 22px; line-height: 32px; }
+  .champs li::before { content: "– "; color: var(--pencil); }
+  [data-reveal] { opacity: 0; transition: opacity .9s ease calc(var(--i) * 200ms); }
+  [data-reveal].is-in { opacity: 1; }
+
+  .site h2 { font-size: clamp(44px, 7vw, 86px); line-height: 1; margin: 0 0 18px; }
+  .site h2 u { text-decoration: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'%3E%3Cpath d='M2 8 Q50 2 100 7 T198 5' fill='none' stroke='%23c0392b' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") bottom / 100% 12px no-repeat; padding-bottom: 6px; }
+  .site p { font-size: 19px; line-height: 32px; max-width: 54ch; margin: 0; }
+  .site ol { font-family: var(--hand); font-size: 22px; line-height: 32px; padding-left: 26px; margin: 16px 0; }
+  .site a { font-family: var(--hand); font-size: 24px; color: var(--ink); display: inline-block; margin-top: 8px; padding: 6px 16px; border: 2px solid var(--ink); border-radius: 14px 8px 16px 6px; text-decoration: none; transition: transform .3s; }
+  .site a:hover { transform: rotate(-2deg) scale(1.03); background: var(--marker); }
+  .legal-note { font-family: var(--body); }
+  @media (max-width: 860px) { .page { padding: 48px 20px 32px 56px; background-image: linear-gradient(90deg, transparent 40px, var(--margin) 40px 42px, transparent 42px), repeating-linear-gradient(transparent 0 31px, var(--line) 31px 32px); } .stats { grid-template-columns: 1fr 1fr; } .two { grid-template-columns: 1fr; } .demo { position: static; display: inline-block; margin-bottom: 8px; } }
+</style>
+</head>
+<body>
+<div class="cbar"><a href="../index.html#concepts">← Galerie</a><strong>Concept 08/08 — Carnet</strong><span class="tag">Maquette · données fictives</span><span class="nav"><a href="07-nocturne.html">← Préc.</a><a href="01-signal.html">Suiv. →</a></span></div>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><filter id="rough"><feTurbulence baseFrequency=".03" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3"/></filter></svg>
+<div class="wrap">
+  <section class="page" aria-label="Maquette de l'application">
+    <span class="tape l" aria-hidden="true"></span><span class="tape r" aria-hidden="true"></span>
+    <span class="demo">démo — données fictives</span>
+    <h1>Mon carnet de progression</h1>
+    <div class="date">30 derniers jours · Joueur Démo #DEMO</div>
+    <nav class="tabs" aria-label="Navigation (maquette)"><a class="on" href="#">Bilan</a><a href="#">Parties</a><a href="#">Coach</a><a href="#">Prépa</a></nav>
+    <div class="stats">
+      <div class="stat" data-reveal="0" style="--i:0"><svg viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><path d="M30 20 C 70 2, 170 4, 186 40 C 198 76, 120 98, 60 92 C 10 86, 2 50, 24 26 C 40 10, 90 8, 110 10"/></svg><div class="v" data-count="79">79</div><div class="l">parties</div></div>
+      <div class="stat" data-reveal="1" style="--i:1"><svg viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><path d="M24 30 C 60 4, 176 8, 190 46 C 196 80, 110 96, 54 90 C 12 84, 6 54, 20 30 C 34 14, 80 6, 120 12"/></svg><div class="v" data-count="49" data-suffix=" %">49 %</div><div class="l">de victoires (IC 39–60 %)</div></div>
+      <div class="stat" data-reveal="2" style="--i:2"><svg viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><path d="M36 18 C 80 4, 172 10, 188 44 C 196 82, 112 98, 58 90 C 16 82, 4 48, 26 24 C 46 8, 96 6, 116 14"/></svg><div class="v" data-count="2.64" data-decimals="2">2,64</div><div class="l">KDA</div></div>
+      <div class="stat" data-reveal="3" style="--i:3"><svg viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><path d="M28 26 C 64 4, 168 6, 188 42 C 200 78, 116 98, 56 92 C 14 86, 4 52, 22 28 C 38 12, 86 8, 112 12"/></svg><div class="v" data-count="6.5" data-decimals="1">6,5</div><div class="l">CS / min</div></div>
+    </div>
+    <div class="two">
+      <div>
+        <svg data-spark data-smooth data-w="560" data-h="160" data-pad="10" width="100%" role="img" aria-label="Courbe du taux de victoire"></svg>
+        <p class="chart-note">↑ ma courbe de victoires (moyenne sur 10 parties)</p>
+        <ul class="champs" data-champs><li><span data-f="name"></span>, <span data-f="games"></span>, <span data-f="wr"></span></li></ul>
+      </div>
+      <div class="sticky" data-reveal="2">
+        <h3>À travailler n°1</h3>
+        Mes morts / 10 min : <span class="hl" data-reveal="3">2,43 ces 15 dernières parties</span> contre 1,77 avant. <em>Lien observé, pas une cause !</em>
+        <p class="hand" style="font-size:20px;margin:12px 0 4px">Objectif : ≤ 1,77 sur 10 parties</p>
+        <ul class="checks" aria-label="6 parties sur 10"><li>✓</li><li>✓</li><li>✓</li><li>✓</li><li>✓</li><li>✓</li><li></li><li></li><li></li><li></li></ul>
+        <p style="font-size:13px;margin:10px 0 0;color:#5b5f66">Confiance : élevée — 15 et 40 parties comparées.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page alt site" aria-label="Maquette du site">
+    <span class="tape l" aria-hidden="true"></span>
+    <h2>Un coach qui <u>tient parole</u>.</h2>
+    <p data-reveal="0">RiftCoach, c'est un carnet de progression pour League of Legends : il relit vos parties, note ce qui revient, et vous propose un objectif à la fois.</p>
+    <ol data-reveal="1"><li>Tout reste sur votre ordinateur.</li><li>Chaque conseil montre ses chiffres.</li><li>Rien qui triche, rien qui espionne.</li></ol>
+    <a href="https://github.com/estebanbaigts/RiftCoach">→ feuilleter le code sur GitHub</a>
+  </section>
+  <p class="legal-note">RiftCoach is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.</p>
+</div>
+<script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Concept 04 — Terminal · RiftCoach</title>
+<link rel="stylesheet" href="concept.css" />
+<style>
+  :root { --bg: #050a06; --fg: #7dff9b; --dim: #5cb874; --amber: #ffb547; --red: #ff6b6b; --mono: "SF Mono", "JetBrains Mono", "Cascadia Code", Menlo, Consolas, ui-monospace, monospace; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.55 var(--mono); }
+  .crt { position: relative; max-width: 1100px; margin: 40px auto 80px; padding: 0 20px; }
+  .screen { position: relative; border-radius: 18px; padding: 28px 30px; background: radial-gradient(ellipse at center, #0b1a0e 0%, #050a06 80%); box-shadow: 0 0 0 2px #10301a, 0 0 60px rgb(125 255 155 / .12), inset 0 0 120px rgb(0 0 0 / .8); overflow: hidden; text-shadow: 0 0 6px rgb(125 255 155 / .55); }
+  .screen::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(to bottom, rgb(0 0 0 / .28) 0 1px, transparent 1px 3px); z-index: 2; }
+  .screen::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: rgb(125 255 155 / .03); animation: flicker 4s steps(2) infinite; z-index: 2; }
+  @keyframes flicker { 50% { opacity: .35; } }
+  .dim { color: var(--dim); } .amber { color: var(--amber); text-shadow: 0 0 6px rgb(255 181 71 / .5); } .red { color: var(--red); }
+  pre { margin: 0; font: inherit; white-space: pre-wrap; }
+  .prompt::before { content: "riftcoach@demo:~$ "; color: var(--dim); }
+  .type { display: inline-block; overflow: hidden; white-space: nowrap; width: 0; vertical-align: bottom; }
+  .is-in .type { animation: typing var(--t, 1.2s) steps(var(--steps, 30)) forwards; animation-delay: calc(var(--i) * .9s); }
+  @keyframes typing { to { width: calc(var(--steps, 30) * 1ch); } }
+  .cursor { display: inline-block; width: .6em; height: 1.1em; background: var(--fg); vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .block { opacity: 0; transition: opacity .01s; }
+  .is-in .block { opacity: 1; transition-delay: calc(var(--i) * .9s + .9s); }
+  .kv { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 24px; margin: 6px 0 14px; }
+  .kv b { font-weight: 400; font-size: 34px; display: block; }
+  .ascii { color: var(--fg); line-height: 1.05; font-size: 13px; }
+  .spark-line { fill: none; stroke: var(--fg); stroke-width: 2; filter: drop-shadow(0 0 4px rgb(125 255 155 / .7)); transition: stroke-dashoffset 2.4s steps(40) 2.2s; }
+  .is-drawn .spark-line { stroke-dashoffset: 0 !important; }
+  .spark-dot { fill: var(--bg); stroke: var(--fg); stroke-width: 1.5; }
+  .bar { color: var(--fg); }
+  .box { border: 1px dashed var(--dim); padding: 12px 16px; margin: 10px 0; }
+  .menu { display: flex; gap: 18px; flex-wrap: wrap; border-bottom: 1px solid var(--dim); padding-bottom: 10px; margin-bottom: 16px; }
+  .menu span:first-child { background: var(--fg); color: var(--bg); text-shadow: none; padding: 0 6px; }
+  .site h2 { font-size: clamp(26px, 4.6vw, 52px); line-height: 1.1; font-weight: 400; margin: 18px 0; }
+  .site a { color: var(--amber); }
+  .btn { display: inline-block; margin-top: 18px; padding: 8px 16px; border: 1px solid var(--fg); color: var(--fg) !important; text-decoration: none; }
+  .btn:hover { background: var(--fg); color: var(--bg) !important; text-shadow: none; }
+  hr { border: 0; border-top: 1px dashed var(--dim); margin: 36px 0; }
+  .legal-note { color: #8fd9a2; opacity: 1 !important; text-shadow: none; }
+  @media (max-width: 760px) { .kv { grid-template-columns: 1fr 1fr; } .ascii { font-size: 10px; } }
+</style>
+</head>
+<body>
+<div class="cbar"><a href="../index.html#concepts">← Galerie</a><strong>Concept 04/08 — Terminal</strong><span class="tag">Maquette · données fictives</span><span class="nav"><a href="03-aurora.html">← Préc.</a><a href="05-suisse.html">Suiv. →</a></span></div>
+<div class="crt">
+  <div class="screen" data-reveal="0">
+    <div class="menu"><span>F1 Tableau</span><span>F2 Historique</span><span>F3 Coach</span><span>F4 Prépa</span><span class="amber">[MODE DÉMO — DONNÉES FICTIVES]</span></div>
+    <pre><span class="prompt"></span><span class="type" style="--i:0;--steps:26">riftcoach stats --days 30</span></pre>
+    <div class="block" style="--i:0">
+      <div class="kv">
+        <div><span class="dim">PARTIES</span><b data-count="79" data-ease="step" data-duration="900">79</b></div>
+        <div><span class="dim">VICTOIRES</span><b data-count="49" data-suffix="%" data-ease="step" data-duration="900">49%</b><span class="dim">IC95 39–60</span></div>
+        <div><span class="dim">KDA</span><b data-count="2.64" data-decimals="2" data-ease="step" data-duration="900">2,64</b></div>
+        <div><span class="dim">CS/MIN</span><b data-count="6.5" data-decimals="1" data-ease="step" data-duration="900">6,5</b><span class="dim">n=66 excl=14</span></div>
+      </div>
+      <svg data-spark data-w="1000" data-h="120" data-dots="2.5" width="100%" role="img" aria-label="Courbe du taux de victoire"></svg>
+    </div>
+    <pre style="margin-top:14px"><span class="prompt"></span><span class="type" style="--i:1;--steps:24">riftcoach coach --top 3</span></pre>
+    <div class="block" style="--i:1">
+      <div class="box">
+<pre><span class="amber">▲ AXE 1</span>  morts/10min    récent <span class="red">2.43</span> (n=15)   réf 1.77 (n=40)   d=1.01   confiance <span class="amber">███</span>
+<span class="dim">  ↳ association observée, pas une cause démontrée.</span>
+<span class="amber">● AXE 2</span>  pool focus     top3 = 38%  (13 champions / 40 classées)            confiance <span class="amber">██░</span>
+<span class="dim">  ↳ heuristique : jamais « élevée ».</span></pre>
+      </div>
+      <pre><span class="dim">objectif #1</span>  morts/10min ≤ 1.77 sur 10 parties   <span class="bar">[██████░░░░]</span> 6/10  <span class="amber">en cours</span></pre>
+    </div>
+    <pre style="margin-top:14px"><span class="prompt"></span><span class="type" style="--i:2;--steps:20">riftcoach champions</span><span class="cursor"></span></pre>
+    <ul class="block" data-champs style="--i:2;list-style:none;padding:0;margin:6px 0 0"><li><span data-f="name"></span> · <span data-f="games"></span> · <span data-f="wr"></span></li></ul>
+  </div>
+
+  <hr />
+  <section class="screen site" aria-label="Maquette du site" data-reveal="1">
+<pre class="ascii" aria-hidden="true">
+ ██████╗ ██╗███████╗████████╗ ██████╗ ██████╗  █████╗  ██████╗██╗  ██╗
+ ██╔══██╗██║██╔════╝╚══██╔══╝██╔════╝██╔═══██╗██╔══██╗██╔════╝██║  ██║
+ ██████╔╝██║█████╗     ██║   ██║     ██║   ██║███████║██║     ███████║
+ ██╔══██╗██║██╔══╝     ██║   ██║     ██║   ██║██╔══██║██║     ██╔══██║
+ ██║  ██║██║██║        ██║   ╚██████╗╚██████╔╝██║  ██║╚██████╗██║  ██║
+ ╚═╝  ╚═╝╚═╝╚═╝        ╚═╝    ╚═════╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝</pre>
+    <h2>&gt; progresser à partir de ses propres parties_</h2>
+<pre><span class="dim">#</span> local-first      <span class="dim">→</span> aucune donnée ne quitte votre machine
+<span class="dim">#</span> déterministe     <span class="dim">→</span> chaque conseil montre ses chiffres et sa confiance
+<span class="dim">#</span> open source      <span class="dim">→</span> Apache-2.0, auditable
+<span class="dim">#</span> règles Riot      <span class="dim">→</span> ni lecture mémoire, ni info cachée, ni MMR</pre>
+    <a class="btn" href="https://github.com/estebanbaigts/RiftCoach">$ git clone github.com/estebanbaigts/RiftCoach</a>
+  </section>
+  <p class="legal-note">RiftCoach is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.</p>
+</div>
+<script src="shared.js"></script>
+</body>
+</html>

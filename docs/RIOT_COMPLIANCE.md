@@ -65,6 +65,28 @@ Légende statut : ✅ Autorisée selon la documentation · ❓ À confirmer aupr
 | F14 | Dé-anonymisation | — | — | — | — | Interdit explicitement | ⛔ | — |
 | F15 | Import de fichiers (export JSON personnel) | Analyser des données déjà détenues | Fichier fourni par l'utilisateur | Fichier local, validé par schéma | Aucune | Nul | ❓ | Format et provenance à définir ; validation stricte obligatoire (déjà en place côté domaine). |
 
+### 4.1 Extension demandée le 2026-10-23 : « partie en direct », picks, counters, builds, runes
+
+Objectif produit exprimé par le mainteneur : voir sa partie en direct, avec des champions conseillés selon leur winrate, les counters du champion adverse, les meilleurs objets et les runes.
+
+| # | Fonctionnalité | Données / source | Impact intégrité | Statut | Conditions et forme autorisable |
+|---|---|---|---|---|---|
+| F16 | Partie en cours : participants, champions, rangs officiels, à l'écran de chargement | Spectator-v5 (active game par PUUID), League-v4 | Faible si limité à l'info publique visible à l'écran de chargement | ❓ | Clé de production + produit approuvé. Ne jamais ré-identifier un joueur masqué (mode streamer / noms cachés en sélection). Pas de rang « estimé ». |
+| F17 | Sélection des champions : options de pick classées par winrate, counters du champion adverse | Statistiques **agrégées** sur un grand nombre de parties (Match-v5) + session de sélection via LCU | Moyen : risque de « dictate player decisions » | ❓ | Présenter **plusieurs options avec leurs compromis**, taille d'échantillon et confiance ; jamais un choix imposé. LCU « not officially supported » : à faire valider. Aucune info sur un joueur dont le nom est caché. |
+| F18 | Builds et runes conseillés pour un champion / matchup, consultés avant la partie | Agrégats Match-v5 + Data Dragon (noms, icônes) | Faible : information publique, hors partie | ✅ (principe) / ❓ (source des agrégats) | Plusieurs builds avec winrate, pick rate et échantillon. Assets Data Dragon uniquement. |
+| F19 | Import automatique des runes / sets d'objets dans le client | LCU (écriture) | Faible mais action automatisée dans le client | ❓ | Uniquement sur action explicite du joueur (bouton), jamais automatique. Confirmation écrite de Riot requise avant distribution. |
+| F20 | Overlay en jeu affichant le build / les runes choisis | Données statiques déjà connues du joueur | Faible : « Game overlays that provide static data » est cité comme cas autorisé | ❓ | Contenu strictement statique et pré-partie. Aucune donnée dynamique sur l'adversaire. |
+| F21 | En partie : timers d'objectifs ou de sorts ennemis, cooldowns, positions, estimation d'or, prédictions | Live Client Data / mémoire | Élevé | ⛔ | Interdit (« previously unknown to the player », mémoire bloquée depuis le 2026-10-06). |
+| F22 | Winrates d'Augments / objets Arena | — | Interdit explicitement | ⛔ | Ne pas afficher, même hors partie. |
+
+**Bloquant principal (F17, F18) : la source des statistiques agrégées.** Un winrate par champion ou par matchup fiable demande des centaines de milliers de parties récentes par patch. Cela suppose :
+
+- **(a)** un pipeline d'agrégation propre (clé de production, serveur, quotas, coûts, politique de confidentialité) ;
+- **(b)** un fournisseur tiers sous licence explicite autorisant cet usage. Le scraping de sites tiers est exclu (CGU, et risque de *data brokering*) ;
+- **(c)** ou, en attendant, les seules statistiques **personnelles** du joueur (faisable immédiatement, mais petits échantillons, à afficher comme tels).
+
+Le prototype peut être construit **en mode démo** (données agrégées synthétiques, clairement étiquetées) sans attendre, mais rien de F16–F20 n'est distribué avec des données réelles avant l'accord de Riot.
+
 ## 5. Avant toute publication publique (checklist)
 
 - [ ] Relire manuellement l'article support LoL (403 lors de la revue automatisée).

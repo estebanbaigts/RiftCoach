@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Concept 05 — Suisse · RiftCoach</title>
+<link rel="stylesheet" href="concept.css" />
+<style>
+  :root { --ink: #111; --paper: #fff; --red: #d40f1c; --rule: #111; --grey: #5e5e5e;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Nimbus Sans", sans-serif; }
+  body { margin: 0; background: var(--paper); color: var(--ink); }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 48px 32px 80px; }
+  .g { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 20px; }
+  .rule { grid-column: 1 / -1; height: 2px; background: var(--rule); transform-origin: left; transform: scaleX(0); transition: transform 1s cubic-bezier(.7,0,.2,1) calc(var(--i) * 120ms); }
+  .rule.is-in { transform: scaleX(1); }
+  .meta { font-size: 12px; line-height: 1.35; font-weight: 500; }
+  .meta.grey { color: var(--grey); }
+  .num { font-weight: 700; font-size: clamp(72px, 11vw, 168px); line-height: .82; letter-spacing: -.055em; font-variant-numeric: tabular-nums; }
+  .red { color: var(--red); }
+  .roll { display: inline-block; overflow: hidden; height: .82em; vertical-align: top; }
+  .roll > span { display: block; transform: translateY(100%); transition: transform 1s cubic-bezier(.7,0,.2,1) calc(var(--i) * 140ms); }
+  .is-in .roll > span, .roll.is-in > span { transform: none; }
+
+  .app-head { padding: 14px 0; align-items: baseline; }
+  .app-head .logo { grid-column: span 3; font-weight: 700; font-size: 18px; letter-spacing: -.02em; }
+  .app-head nav { grid-column: span 6; display: flex; gap: 22px; font-size: 14px; }
+  .app-head nav a { color: var(--ink); text-decoration: none; }
+  .app-head nav a.on { color: var(--red); font-weight: 700; }
+  .app-head .demo { grid-column: span 3; text-align: right; font-size: 12px; }
+  .demo b { background: var(--ink); color: var(--paper); padding: 2px 6px; font-weight: 700; }
+  .k { padding: 26px 0 30px; }
+  .k1 { grid-column: 1 / span 6; } .k2 { grid-column: 7 / span 3; } .k3 { grid-column: 10 / span 3; }
+  .bars { grid-column: 1 / span 8; display: flex; align-items: flex-end; gap: 4px; height: 220px; padding: 24px 0; }
+  .bars i { flex: 1; background: var(--ink); height: calc(var(--v) * 1%); transform-origin: bottom; transform: scaleY(0); transition: transform .7s cubic-bezier(.7,0,.2,1) calc(var(--i) * 25ms); }
+  .bars i.lo { background: var(--red); }
+  .bars.is-in i { transform: scaleY(1); }
+  .coach { grid-column: 9 / span 4; padding: 24px 0; }
+  .coach h3 { font-size: 30px; line-height: 1; letter-spacing: -.03em; margin: 10px 0 16px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid var(--ink); padding-top: 10px; }
+  .pair strong { display: block; font-size: 44px; letter-spacing: -.04em; line-height: 1; }
+  .champs { grid-column: 1 / -1; list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, 1fr); column-gap: 20px; }
+  .champs li { border-top: 1px solid var(--ink); padding-top: 8px; font-size: 14px; }
+  .champs li b { display: block; font-size: 24px; letter-spacing: -.02em; }
+
+  .site { margin-top: 120px; }
+  .site .poster { grid-column: 1 / span 9; font-size: clamp(56px, 10vw, 150px); font-weight: 700; line-height: .86; letter-spacing: -.06em; }
+  .site .side { grid-column: 10 / span 3; align-self: end; font-size: 15px; line-height: 1.45; }
+  .site .cols { margin-top: 40px; }
+  .site .cols div { grid-column: span 3; padding-top: 10px; border-top: 2px solid var(--ink); font-size: 14px; line-height: 1.45; }
+  .site .cols b { display: block; margin-bottom: 6px; font-size: 13px; }
+  .site a.gh { display: inline-block; margin-top: 18px; background: var(--red); color: #fff; padding: 12px 18px; text-decoration: none; font-weight: 700; }
+  .site a.gh:hover { background: var(--ink); }
+  .legal-note { color: var(--grey); opacity: 1; margin-top: 64px; }
+  @media (max-width: 860px) { .g > * { grid-column: 1 / -1 !important; } .champs { grid-template-columns: 1fr 1fr; } .app-head .demo { text-align: left; } .app-head nav { flex-wrap: wrap; } }
+</style>
+</head>
+<body>
+<div class="cbar"><a href="../index.html#concepts">← Galerie</a><strong>Concept 05/08 — Suisse</strong><span class="tag">Maquette · données fictives</span><span class="nav"><a href="04-terminal.html">← Préc.</a><a href="06-pop.html">Suiv. →</a></span></div>
+<div class="wrap">
+  <section aria-label="Maquette de l'application">
+    <div class="g app-head">
+      <div class="logo">RiftCoach</div>
+      <nav aria-label="Navigation (maquette)"><a class="on" href="#">Tableau</a><a href="#">Historique</a><a href="#">Coach</a><a href="#">Préparation</a></nav>
+      <div class="demo"><b>DÉMO</b> données fictives</div>
+    </div>
+    <div class="g"><div class="rule" data-reveal="0"></div></div>
+    <div class="g">
+      <div class="k k1" data-reveal="1"><div class="meta">Taux de victoire<br /><span class="grey">30 jours · n = 79 · IC 95 % 39–60</span></div><div class="num"><span class="roll"><span>49<span class="red">%</span></span></span></div></div>
+      <div class="k k2" data-reveal="2"><div class="meta">KDA<br /><span class="grey">agrégé</span></div><div class="num" style="font-size:clamp(48px,6vw,96px)"><span class="roll"><span>2,64</span></span></div></div>
+      <div class="k k3" data-reveal="3"><div class="meta">CS / min<br /><span class="grey">66 parties · 14 exclues</span></div><div class="num" style="font-size:clamp(48px,6vw,96px)"><span class="roll"><span>6,5</span></span></div></div>
+    </div>
+    <div class="g"><div class="rule" data-reveal="2"></div></div>
+    <div class="g">
+      <div class="bars" id="bars" data-reveal="3" role="img" aria-label="Taux de victoire glissant, 30 points"></div>
+      <div class="coach" data-reveal="4">
+        <div class="meta red">Axe 01 — confiance élevée</div>
+        <h3>Morts par 10 minutes en hausse.</h3>
+        <div class="pair"><div><span class="meta grey">Récent, n = 15</span><strong class="red">2,43</strong></div><div><span class="meta grey">Référence, n = 40</span><strong>1,77</strong></div></div>
+        <p class="meta grey" style="margin-top:14px">Association observée, pas une cause. Objectif : ≤ 1,77 sur 10 parties — 6/10.</p>
+      </div>
+    </div>
+    <ul class="champs" data-champs><li data-reveal><b data-f="name"></b><span data-f="games"></span> · <span data-f="wr"></span></li></ul>
+  </section>
+
+  <section class="site" aria-label="Maquette du site">
+    <div class="g"><div class="rule" data-reveal="0"></div></div>
+    <div class="g" style="margin-top:20px">
+      <div class="poster" data-reveal="1"><span class="roll"><span>Moins</span></span><br /><span class="roll"><span>de bruit.</span></span><br /><span class="roll"><span class="red">Plus de</span></span><br /><span class="roll"><span class="red">progrès.</span></span></div>
+      <div class="side" data-reveal="2">RiftCoach est un compagnon open source pour League of Legends. Il lit votre historique, isole trois axes et les transforme en objectifs mesurables. Localement.<br /><a class="gh" href="https://github.com/estebanbaigts/RiftCoach">GitHub ↗</a></div>
+    </div>
+    <div class="g cols">
+      <div data-reveal="1"><b>01 Comprendre</b>Chaque chiffre : période, définition, échantillon.</div>
+      <div data-reveal="2"><b>02 Identifier</b>Trois axes maximum, avec leur niveau de confiance.</div>
+      <div data-reveal="3"><b>03 Agir</b>Un objectif chiffré, suivi partie après partie.</div>
+      <div data-reveal="4"><b>04 Respecter</b>Local, sans télémétrie, conforme aux règles Riot.</div>
+    </div>
+  </section>
+  <p class="legal-note">RiftCoach is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.</p>
+</div>
+<script src="shared.js"></script>
+<script>
+  (function () {
+    var bars = document.getElementById("bars");
+    var s = window.RC.DATA.series;
+    s.forEach(function (v, i) {
+      var b = document.createElement("i");
+      b.style.setProperty("--v", ((v - 30) / 45) * 100);
+      b.style.setProperty("--i", i);
+      if (v < 50) b.className = "lo";
+      bars.appendChild(b);
+    });
+    document.querySelectorAll(".roll").forEach(function (r, i) { r.style.setProperty("--i", i % 4); });
+  })();
+</script>
+</body>
+</html>

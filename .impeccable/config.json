@@ -1,0 +1,44 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "site/concepts/03-aurora.html"
+        ],
+        "createdAt": "2026-10-23T09:09:56.520Z",
+        "reason": "Aurora concept is an intentional glass/glow art direction, one of 8 deliberately different styles the user requested"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "site/concepts/03-aurora.html"
+        ],
+        "createdAt": "2026-10-23T09:09:56.538Z",
+        "reason": "Aurora concept: shimmering gradient headline is the defining trait of this requested style"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "site/concepts/04-terminal.html"
+        ],
+        "createdAt": "2026-10-23T09:09:56.555Z",
+        "reason": "Terminal concept: CRT phosphor glow is domain-appropriate for the requested retro-terminal style"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "site/style.css"
+        ],
+        "createdAt": "2026-10-23T09:14:54.117Z",
+        "reason": "Ruled notebook lines on the Carnet concept swatch; domain-appropriate texture for that concept"
+      }
+    ]
+  }
+}

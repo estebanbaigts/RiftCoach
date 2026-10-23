@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Concept 06 — Pop · RiftCoach</title>
+<link rel="stylesheet" href="concept.css" />
+<style>
+  :root { --ink: #1d1a2b; --cream: #fff7e8; --yellow: #ffd84d; --pink: #ff8fb1; --sky: #7fd6ff; --mint: #8ff0c4; --violet: #b9a3ff;
+    --spring: cubic-bezier(.34, 1.56, .64, 1); font-family: "Avenir Next Rounded", "Arial Rounded MT Bold", "Nunito", "Trebuchet MS", ui-rounded, sans-serif; }
+  body { margin: 0; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+  .shapes { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+  .shapes i { position: absolute; border: 3px solid var(--ink); animation: float 9s ease-in-out infinite; }
+  .s1 { width: 90px; height: 90px; border-radius: 50%; background: var(--pink); top: 14%; left: 4%; }
+  .s2 { width: 0; height: 0; border: 0 !important; border-left: 50px solid transparent !important; border-right: 50px solid transparent !important; border-bottom: 86px solid var(--sky) !important; top: 62%; right: 5%; animation-delay: -3s; }
+  .s3 { width: 70px; height: 70px; background: var(--yellow); border-radius: 18px; top: 82%; left: 12%; animation-delay: -5s; }
+  .s4 { width: 120px; height: 40px; border-radius: 999px; background: var(--mint); top: 30%; right: 8%; animation-delay: -1.5s; }
+  @keyframes float { 50% { transform: translateY(-22px) rotate(12deg); } }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 48px 24px 80px; display: grid; gap: 72px; }
+  .card { background: #fff; border: 3px solid var(--ink); border-radius: 26px; box-shadow: 6px 6px 0 var(--ink); }
+  .app { padding: 24px; }
+  .top { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+  .logo { font-weight: 800; font-size: 26px; display: flex; gap: 10px; align-items: center; }
+  .logo i { width: 34px; height: 34px; border-radius: 50%; background: var(--yellow); border: 3px solid var(--ink); display: inline-block; animation: spin 6s linear infinite; background-image: conic-gradient(var(--pink) 0 25%, var(--yellow) 0 50%, var(--sky) 0 75%, var(--mint) 0); }
+  @keyframes spin { to { transform: rotate(1turn); } }
+  nav { display: flex; gap: 8px; flex-wrap: wrap; }
+  nav a { padding: 8px 16px; border: 3px solid var(--ink); border-radius: 999px; color: var(--ink); text-decoration: none; font-weight: 700; background: #fff; transition: transform .25s var(--spring); }
+  nav a:hover { transform: translateY(-3px) rotate(-2deg); }
+  nav a.on { background: var(--violet); }
+  .sticker { display: inline-block; padding: 6px 14px; border: 3px solid var(--ink); border-radius: 12px; background: var(--yellow); font-weight: 800; font-size: 13px; transform: rotate(-4deg); }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 22px; }
+  .tile { padding: 18px; border-radius: 22px; border: 3px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); transition: transform .3s var(--spring), box-shadow .3s var(--spring); }
+  .tile:hover { transform: translate(-3px, -3px) rotate(-1deg); box-shadow: 8px 8px 0 var(--ink); }
+  .tile .lbl { font-weight: 700; font-size: 14px; }
+  .tile .val { font-weight: 800; font-size: 46px; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .y { background: var(--yellow); } .p { background: var(--pink); } .b { background: var(--sky); } .m { background: var(--mint); } .v { background: var(--violet); }
+  .chart { grid-column: span 3; background: #fff; }
+  .coach { background: var(--violet); }
+  .coach h3 { margin: 10px 0 6px; font-size: 22px; }
+  .coach p { margin: 0 0 10px; font-size: 14px; line-height: 1.45; }
+  .spark-line { fill: none; stroke: var(--ink); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; transition: stroke-dashoffset 1.8s var(--spring); }
+  .spark-dot { fill: var(--pink); stroke: var(--ink); stroke-width: 2.5; transform-box: fill-box; transform-origin: center; transform: scale(0); transition: transform .5s var(--spring) calc(.6s + var(--i) * 35ms); }
+  .is-drawn .spark-line { stroke-dashoffset: 0 !important; }
+  .is-drawn .spark-dot { transform: scale(1); }
+  .blobs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; list-style: none; padding: 0; }
+  .blobs li { padding: 10px 16px; border-radius: 999px; border: 3px solid var(--ink); font-weight: 700; background: #fff; animation: pop .6s var(--spring) both; animation-delay: calc(var(--i) * 90ms + .3s); }
+  .blobs li:nth-child(5n+1) { background: var(--pink); } .blobs li:nth-child(5n+2) { background: var(--sky); } .blobs li:nth-child(5n+3) { background: var(--mint); } .blobs li:nth-child(5n+4) { background: var(--yellow); }
+  @keyframes pop { from { transform: scale(0) rotate(-20deg); } }
+  .goal { height: 22px; border: 3px solid var(--ink); border-radius: 999px; background: #fff; overflow: hidden; }
+  .goal i { display: block; height: 100%; width: 0; background: repeating-linear-gradient(-45deg, var(--yellow) 0 10px, var(--pink) 10px 20px); transition: width 1.4s var(--spring) .5s; }
+  .is-in .goal i { width: 60%; }
+  [data-reveal] { opacity: 0; transform: scale(.85) rotate(-3deg); transition: transform .7s var(--spring) calc(var(--i) * 90ms), opacity .3s calc(var(--i) * 90ms); }
+  [data-reveal].is-in { opacity: 1; transform: none; }
+
+  .site { padding: 64px 40px; text-align: center; background: var(--sky); }
+  .site h2 { font-size: clamp(44px, 8vw, 104px); line-height: .95; margin: 16px 0; font-weight: 800; letter-spacing: -.02em; }
+  .site h2 .w { display: inline-block; animation: wobble 2.8s ease-in-out infinite; }
+  .site h2 .w:nth-child(2) { animation-delay: .2s; } .site h2 .w:nth-child(3) { animation-delay: .4s; }
+  @keyframes wobble { 50% { transform: translateY(-8px) rotate(-3deg); } }
+  .site p { max-width: 50ch; margin: 0 auto; font-size: 18px; line-height: 1.55; font-weight: 600; }
+  .site .btns { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .site .btns a { padding: 16px 26px; border: 3px solid var(--ink); border-radius: 18px; background: var(--yellow); color: var(--ink); font-weight: 800; text-decoration: none; box-shadow: 5px 5px 0 var(--ink); transition: transform .2s var(--spring), box-shadow .2s; }
+  .site .btns a:hover { transform: translate(-2px,-2px) scale(1.04); box-shadow: 7px 7px 0 var(--ink); }
+  .site .btns a.alt { background: #fff; }
+  
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr 1fr; } .chart { grid-column: span 2; } }
+</style>
+</head>
+<body>
+<div class="shapes" aria-hidden="true"><i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i></div>
+<div class="cbar"><a href="../index.html#concepts">← Galerie</a><strong>Concept 06/08 — Pop</strong><span class="tag">Maquette · données fictives</span><span class="nav"><a href="05-suisse.html">← Préc.</a><a href="07-nocturne.html">Suiv. →</a></span></div>
+<div class="wrap">
+  <section class="card app" aria-label="Maquette de l'application">
+    <div class="top">
+      <div class="logo"><i aria-hidden="true"></i>RiftCoach</div>
+      <nav aria-label="Navigation (maquette)"><a class="on" href="#">Accueil</a><a href="#">Parties</a><a href="#">Coach</a><a href="#">Prépa</a></nav>
+      <span class="sticker">✿ Démo — données fictives</span>
+    </div>
+    <div class="grid">
+      <div class="tile y" data-reveal="0"><div class="lbl">Parties</div><div class="val" data-count="79">79</div></div>
+      <div class="tile p" data-reveal="1"><div class="lbl">Victoires</div><div class="val" data-count="49" data-suffix=" %">49 %</div><div class="lbl">sur 79 · IC 39–60 %</div></div>
+      <div class="tile b" data-reveal="2"><div class="lbl">KDA</div><div class="val" data-count="2.64" data-decimals="2">2,64</div></div>
+      <div class="tile m" data-reveal="3"><div class="lbl">CS / min</div><div class="val" data-count="6.5" data-decimals="1">6,5</div></div>
+      <div class="tile chart" data-reveal="4"><div class="lbl">Ta courbe de victoires (glissante, 10 parties)</div><svg data-spark data-smooth data-dots="5" data-w="700" data-h="190" data-pad="14" width="100%" role="img" aria-label="Courbe du taux de victoire"></svg></div>
+      <div class="tile coach" data-reveal="5"><span class="sticker" style="background:#fff">Axe nº1</span><h3>Un peu trop de morts 👀</h3><p>2,43 / 10 min récemment (15 parties) vs 1,77 avant (40). C'est une tendance, pas un verdict.</p><div class="lbl">Objectif ≤ 1,77 · 6/10</div><div class="goal"><i></i></div></div>
+    </div>
+    <ul class="blobs" data-champs><li><span data-f="name"></span> · <span data-f="wr"></span></li></ul>
+  </section>
+
+  <section class="card site" aria-label="Maquette du site">
+    <span class="sticker">Open source · gratuit · local</span>
+    <h2><span class="w">Joue.</span> <span class="w">Comprends.</span> <span class="w">Progresse.</span></h2>
+    <p>RiftCoach lit tes parties, trouve tes 3 axes de progrès et te propose des objectifs que tu peux vraiment suivre. Rien ne quitte ton ordi.</p>
+    <div class="btns"><a href="https://github.com/estebanbaigts/RiftCoach">★ Le code sur GitHub</a><a class="alt" href="../index.html#pourquoi">Pourquoi ce projet ?</a></div>
+  </section>
+  <p class="legal-note">RiftCoach is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.</p>
+</div>
+<script src="shared.js"></script>
+</body>
+</html>
