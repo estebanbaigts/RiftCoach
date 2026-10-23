@@ -1,15 +1,9 @@
 /// <reference types="vitest/config" />
 import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
+import { CSP } from "./config/csp";
 
-/**
- * Strict CSP for production bundles: no remote code, no inline scripts, no network.
- * Injected at build time only (React Fast Refresh needs an inline script in dev).
- * The Tauri webview applies the equivalent policy from src-tauri/tauri.conf.json.
- */
-export const CSP =
-  "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'";
-
+/** Injected at build time only (React Fast Refresh needs an inline script in dev). */
 const cspPlugin = (): Plugin => ({
   name: "riftcoach-csp",
   apply: "build",

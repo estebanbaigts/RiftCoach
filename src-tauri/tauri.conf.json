@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "RiftCoach",
+  "version": "0.1.0",
+  "identifier": "io.github.estebanbaigts.riftcoach",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "label": "main",
+        "title": "RiftCoach",
+        "width": 1240,
+        "height": 820,
+        "minWidth": 800,
+        "minHeight": 600,
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+      "devCsp": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' ws://127.0.0.1:1420 http://127.0.0.1:1420; object-src 'none'; base-uri 'none'",
+      "freezePrototype": true
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "Utility",
+    "shortDescription": "Local-first League of Legends progression companion",
+    "longDescription": "RiftCoach helps you understand your performance and turn observations into measurable goals. Not endorsed by Riot Games.",
+    "copyright": "RiftCoach contributors",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
+    "macOS": { "minimumSystemVersion": "11.0" },
+    "windows": { "webviewInstallMode": { "type": "embedBootstrapper" } }
+  }
+}

@@ -1,0 +1,27 @@
+[package]
+name = "riftcoach"
+version = "0.1.0"
+description = "Open-source, local-first League of Legends progression companion"
+license = "Apache-2.0"
+edition = "2021"
+rust-version = "1.77.2"
+publish = false
+
+[lib]
+# The _lib suffix avoids a name clash with the binary on Windows (cargo#8519).
+name = "riftcoach_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.7", features = [] }
+
+[dependencies]
+# No plugins: the frontend has no access to the filesystem, shell, network or OS APIs.
+tauri = { version = "2.12", features = [] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

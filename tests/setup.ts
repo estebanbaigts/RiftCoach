@@ -3,6 +3,6 @@ import { cleanup } from "@testing-library/react";
 import { afterEach } from "vitest";
 
 // jsdom does not implement element scrolling.
-if (!Element.prototype.scrollTo) Element.prototype.scrollTo = () => {};
+if (typeof Element !== "undefined" && !Element.prototype.scrollTo) Element.prototype.scrollTo = () => {};
 
 afterEach(() => cleanup());
